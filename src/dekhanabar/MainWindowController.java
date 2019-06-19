@@ -66,7 +66,8 @@ public class MainWindowController implements Initializable {
           
           JSONArray jsonArray = (JSONArray) obj;
           List <String> stor = new ArrayList<>();
-
+          String mainPerson = "Matching rate is very low";
+          double prev = 0.0;
           for(Object o: jsonArray){
               JSONObject tmpObj = (JSONObject) o;
               Object name = tmpObj.keySet();
@@ -74,14 +75,16 @@ public class MainWindowController implements Initializable {
               String nam = name.toString().replaceAll("[\\[\\],]","");
              // ShowResults.appendText(nam + "\n");
               if(SimilarityTestAlgo.similarity(nam, one) > .3){
-                  
+                  if(SimilarityTestAlgo.similarity(nam, one) > prev) mainPerson = nam + "\nDetails:\n\n" + tmpObj.get(nam) + "\n\n\n";
+                  prev = SimilarityTestAlgo.similarity(nam, one);
                   stor.add(nam + "\nDetails:\n\n" + tmpObj.get(nam) + "\n\n\n");
               }           
           }
           ShowResults.appendText("Select any one them:\n");
-          
+          ShowResults.appendText(mainPerson);
           for(String x: stor){
-              ShowResults.appendText(x + "\n");
+              if(mainPerson != x)
+                ShowResults.appendText(x + "\n");
               //System.out.println(x);
           }
           
@@ -101,22 +104,23 @@ public class MainWindowController implements Initializable {
           JSONArray jsonArray = (JSONArray) obj;
           List <String> stor = new ArrayList<>();
           String mainPerson = "Matching rate is very low";
+          double prev = 0.0;
           for(Object o: jsonArray){
               JSONObject tmpObj = (JSONObject) o;
               Object name = tmpObj.keySet();
               
               String nam = name.toString().replaceAll("[\\[\\],]","");
           //    ShowResults.appendText(nam + "\n");
-          double prev = 0.0;
           
-          if(SimilarityTestAlgo.similarity(nam, one) == 1.0){
+          
+          if(SimilarityTestAlgo.similarity(nam, one) > 0.7){
                   if(prev <  SimilarityTestAlgo.similarity(nam, one)) mainPerson = nam + "\nDetails:\n\n" + tmpObj.get(nam) + "\n\n\n";
                   prev = SimilarityTestAlgo.similarity(nam, one);
                   stor.add(nam + "\nDetails:\n\n" + tmpObj.get(nam) + "\n\n\n");
               }           
           }
         //  ShowResults.appendText("Select any one them:\n");
-       //   ShowResults.appendText(mainPerson);
+          ShowResults.appendText(mainPerson);
           for(String x: stor){
               
               if(x != mainPerson) ShowResults.appendText(x + "\n");

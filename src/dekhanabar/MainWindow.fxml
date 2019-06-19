@@ -37,7 +37,7 @@
       <Text fontSmoothingType="LCD" layoutX="365.0" layoutY="140.0" stroke="#5b4545" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: Purple;" text="Search by specialty" underline="true" wrappingWidth="145.23828887939453" />
       <JFXComboBox fx:id="ComboVoxId" layoutX="53.0" layoutY="165.0" promptText="Gender" />
       <Button layoutX="336.0" layoutY="51.0" mnemonicParsing="false" onAction="#GoForSearchByName" text="Search" />
-      <TextField fx:id="SpecialtyId" layoutX="603.0" layoutY="173.0" prefHeight="29.0" prefWidth="343.0" promptText="in lower case (e.g: skin and sex, heart, medicine)" />
+      <TextField fx:id="SpecialtyId" layoutX="603.0" layoutY="173.0" prefHeight="29.0" prefWidth="343.0" promptText="(e.g: Skin and Venereal Diseases, Heart, Medicine)" />
       <Text layoutX="528.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Specialty:" />
       <Text layoutX="9.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Place you currently live in:                                              (This sections helps us to suggest the doctors near to your location)" wrappingWidth="940.4089965820312" />
       <TextField fx:id="DoctorNameId1" layoutX="155.0" layoutY="267.0" prefHeight="32.0" prefWidth="57.0" promptText="Enter doctor's name" text="District" />
